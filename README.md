@@ -12,6 +12,7 @@
 - [《架构整洁之道》](https://book.douban.com/subject/30333919/)
 - [《图解服务器端网络架构》](https://book.douban.com/subject/26369253/)    
 - [《企业IT架构转型之道》](https://book.douban.com/subject/27039508/)
+- [Web信息架构(第3版) : 设计大型网站](https://book.douban.com/subject/3169342/)
 
 #### 微服务
 
@@ -21,6 +22,8 @@
 - [《生产微服务》](https://book.douban.com/subject/27127050/)
 - [《微服务设计》](https://book.douban.com/subject/26772677/)：重点书籍    
 - [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)：重点书籍
+- [《微服务架构设计模式》](https://book.douban.com/subject/33425123/)
+- [《持续演进的Cloud Native：云原生架构下微服务最佳实践》](https://book.douban.com/subject/30370644/)
 
 #### 分布式
 
