@@ -1,5 +1,19 @@
 ## 开宗明义
 
+#### 笔记计划结构
+
+- 架构概述篇
+    - 架构演进
+    - 微服务设计
+    - 微服务要点
+- 架构实践篇
+    - Java中的微服务架构
+    - Go中的微服务架构
+- 架构原理篇
+    - 分布式系统
+    - 分布式原理与泛型
+    - 算法的实现与源码分析
+
 #### 集群 分布式 微服务 SOA
 
 很多时候，我们在讨论技术架构时，都离不开集群、分布式以及现在的微服务。他们三者往往让初学者捉摸不透有什么区分。笔者在第一章第0节特点优先介绍这三者的概念，以预防后期笔记让读者产生困惑。
@@ -132,45 +146,49 @@ db：
 #### web架构
 
 - [《从零开始学架构》](https://book.douban.com/subject/30335935/)
-- [《大型网站技术架构》](https://book.douban.com/subject/25723064/)：重点书籍
-- [《聊聊“架构”》](https://book.douban.com/subject/27034443/)
+- [《大型网站技术架构》李智慧](https://book.douban.com/subject/25723064/)
 - [《互联网创业核心技术:构建可伸缩的web应用》](https://book.douban.com/subject/26906846/)
 - [《架构即未来:现代企业可扩展的Web架构、流程和组织》](https://book.douban.com/subject/26765979/)
-- [《企业应用架构模式》](https://book.douban.com/subject/4826290/)
 - [《系统架构 : 复杂系统的产品设计与开发》](https://book.douban.com/subject/26938710/)
-- [《架构整洁之道》](https://book.douban.com/subject/30333919/)
-- [《图解服务器端网络架构》](https://book.douban.com/subject/26369253/)    
+- [《架构整洁之道》](https://book.douban.com/subject/30333919/)   
 - [《企业IT架构转型之道》](https://book.douban.com/subject/27039508/)
-- [Web信息架构(第3版) : 设计大型网站](https://book.douban.com/subject/3169342/)
+- [《架构修炼之道》](https://book.douban.com/subject/33389549/)
+- [《银行信息系统架构》](https://book.douban.com/subject/26677445/)
 
 #### 分布式
 
+原理篇：
 - [《分布式系统：概念与设计》](https://book.douban.com/subject/21624776/)
-- [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)：重点书籍
-- [《RabbitMQ实战指南》](https://book.douban.com/subject/27591386/)
-- [《分布式服务架构》](https://book.douban.com/subject/27091029/)
-- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)：重点书籍
-- [《分布式对象存储》](https://book.douban.com/subject/25723658/)
+- [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)
+- [《分布式实时处理系统：原理、架构与实现》](https://book.douban.com/subject/26833829/)
+- [《面向模式的软件架构》](https://book.douban.com/subject/4848563/)
+
+实践篇：
+- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
 - [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)
+- [《RabbitMQ实战指南》](https://book.douban.com/subject/27591386/)
 
 #### 微服务
 
-- [《Spring微服务实战》](https://book.douban.com/subject/30233791/)
-- [《Spring Cloud微服务实战》](https://book.douban.com/subject/27025912/)
-- [《架构探险：轻量级微服务架构》](https://book.douban.com/subject/27115266/)
+原理篇：
 - [《生产微服务》](https://book.douban.com/subject/27127050/)
-- [《微服务设计》](https://book.douban.com/subject/26772677/)：重点书籍    
-- [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)：重点书籍
+- [《微服务设计》](https://book.douban.com/subject/26772677/) 
+- [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)
 - [《微服务架构设计模式》](https://book.douban.com/subject/33425123/)
 - [《持续演进的Cloud Native：云原生架构下微服务最佳实践》](https://book.douban.com/subject/30370644/)
 
+实践篇：
+- [《Spring微服务实战》](https://book.douban.com/subject/30233791/)
+- [《架构探险：轻量级微服务架构》](https://book.douban.com/subject/27115266/)
+- [《Spring Cloud微服务实战》](https://book.douban.com/subject/27025912/)
+
 ## 视频
 
-- [分布式架构概述](https://www.bilibili.com/video/av49324425)
+- [MIT 6.824(英)](https://www.bilibili.com/video/av38073607)
 - [麻省大学：分布式系统概念及分布式操作系统原理(英)](https://www.bilibili.com/video/av45207204)
+- [分布式架构概述](https://www.bilibili.com/video/av49324425)
 - [分布式亿级高并发电商项目(14天)](https://www.bilibili.com/video/av32170669)
 - [springboot分布式项目实战](https://www.bilibili.com/video/av54330093)
-- [MIT 6.824(英)](https://www.bilibili.com/video/av38073607)
 - [微服务架构的分布式事务解决方案](https://www.bilibili.com/video/av23742194)
 - [一站式学习Redis 从入门到高可用分布式实践](https://www.bilibili.com/video/av54347890)
 - [MySQL大型分布式集群Mycat实战-龙果](https://www.bilibili.com/video/av53909897)
@@ -190,8 +208,8 @@ db：
 **推荐书籍**地址：https://github.com/ruyuejun/polaris  
 
 **OverNote系列分门别类**：  
-- [架构](https://github.com/overnote/architecture/)：分布式与微服务相关
-- [Server](https://github.com/overnote/server)：包含常用服务端技术：Nginx、mysql、redis、mongodb、linux系统等
+- [架构：分布式与微服务](https://github.com/overnote/architecture/)：分布式与微服务相关
+- [服务端常用技术](https://github.com/overnote/server)：包含常用服务端技术：Nginx、mysql、redis、mongodb、linux系统等
 - [数据结构与算法](https://github.com/overnote/algorithm)：数据结构与算法笔记，主讲Go、C版本，另附JS，Java版本
 - [Go](https://github.com/overnote/golang)：详尽的Go领域笔记，包括语法、并发编程、web编程、微服务等
 - [JavaScript](https://github.com/overnote/javascript)：包含网页、JS、前端工程化、Node、vue、react等JS相关领域技术
