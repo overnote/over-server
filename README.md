@@ -143,7 +143,7 @@ db：
 
 ## 相关资料
 
-#### web架构
+#### 系统架构
 
 - [《从零开始学架构》](https://book.douban.com/subject/30335935/)
 - [《大型网站技术架构》李智慧](https://book.douban.com/subject/25723064/)
