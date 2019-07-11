@@ -140,53 +140,57 @@ db：
 
 ## 一 相关资料
 
-#### 1.1 系统架构
+#### 1.1 基础学习
 
 - [《从零开始学架构》](https://book.douban.com/subject/30335935/)
 - [《大型网站技术架构》李智慧](https://book.douban.com/subject/25723064/)
 - [《互联网创业核心技术:构建可伸缩的web应用》](https://book.douban.com/subject/26906846/)
 - [《架构即未来:现代企业可扩展的Web架构、流程和组织》](https://book.douban.com/subject/26765979/)
-- [《系统架构 : 复杂系统的产品设计与开发》](https://book.douban.com/subject/26938710/)
-- [《架构整洁之道》](https://book.douban.com/subject/30333919/)   
-- [《企业IT架构转型之道》](https://book.douban.com/subject/27039508/)
-- [《架构修炼之道》](https://book.douban.com/subject/33389549/)
-- [《银行信息系统架构》](https://book.douban.com/subject/26677445/)
 
-#### 1.2 分布式
+#### 1.2 分布式原理
 
-原理篇：
 - [《分布式系统：概念与设计》](https://book.douban.com/subject/21624776/)
 - [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)
 - [《分布式实时处理系统：原理、架构与实现》](https://book.douban.com/subject/26833829/)
 - [《面向模式的软件架构》](https://book.douban.com/subject/4848563/)
 
-实践篇：
-- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
-- [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)
-- [《RabbitMQ实战指南》](https://book.douban.com/subject/27591386/)
+#### 1.3 微服务原理
 
-#### 1.3 微服务
-
-原理篇：
 - [《生产微服务》](https://book.douban.com/subject/27127050/)
 - [《微服务设计》](https://book.douban.com/subject/26772677/) 
 - [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)
 - [《微服务架构设计模式》](https://book.douban.com/subject/33425123/)
 - [《持续演进的Cloud Native：云原生架构下微服务最佳实践》](https://book.douban.com/subject/30370644/)
 
-实践篇：
+#### 1.4 工具与实践
+
+应用实践：
+- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
+- [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)
+
+技术实践：
+- [《RabbitMQ实战指南》](https://book.douban.com/subject/27591386/)
 - [《Spring微服务实战》](https://book.douban.com/subject/30233791/)
 - [《架构探险：轻量级微服务架构》](https://book.douban.com/subject/27115266/)
 - [《Spring Cloud微服务实战》](https://book.douban.com/subject/27025912/)
 - [《Kafka权威指南》](https://book.douban.com/subject/27665114/)
 
-## 1.4 docerk与k8s
+docerk与k8s：
 - [《深入浅出Docker》](https://book.douban.com/subject/30486354/)
 - [《第一本Docker书 修订版》](https://book.douban.com/subject/26780404/)
 - [《Docker——容器与容器云（第2版）》](https://book.douban.com/subject/26894736/)
 - [《每天5分钟玩转Kubernetes》](https://book.douban.com/subject/30186113/)
 - [《Kubernetes in Action》](https://book.douban.com/subject/26997846/)
 - [《深入浅出Prometheus》](https://book.douban.com/subject/33391107/)
+
+
+#### 1.5 架构之术
+
+架构之术：非技术学习，提升整体设计思维
+- [《系统架构 : 复杂系统的产品设计与开发》](https://book.douban.com/subject/26938710/)
+- [《架构整洁之道》](https://book.douban.com/subject/30333919/)   
+- [《企业IT架构转型之道》](https://book.douban.com/subject/27039508/)
+- [《银行信息系统架构》](https://book.douban.com/subject/26677445/)
 
 ## 视频
 
