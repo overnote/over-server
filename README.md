@@ -150,9 +150,8 @@ db：
 #### 1.2 分布式原理
 
 - [《分布式系统：概念与设计》](https://book.douban.com/subject/21624776/)
-- [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)
+- [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)：即ddia《数据密集型应用系统设计》，[ddia中文翻译](https://github.com/Vonng/ddia)
 - [《分布式实时处理系统：原理、架构与实现》](https://book.douban.com/subject/26833829/)
-- [《面向模式的软件架构》](https://book.douban.com/subject/4848563/)
 
 #### 1.3 微服务原理
 
@@ -191,6 +190,7 @@ docerk与k8s：
 - [《架构整洁之道》](https://book.douban.com/subject/30333919/)   
 - [《企业IT架构转型之道》](https://book.douban.com/subject/27039508/)
 - [《银行信息系统架构》](https://book.douban.com/subject/26677445/)
+- [《面向模式的软件架构》](https://book.douban.com/subject/4848563/)
 
 ## 视频
 
@@ -207,9 +207,6 @@ docerk与k8s：
 - [springboot微服务架构阶段全套教程](https://www.bilibili.com/video/av47580663)
 - [微服务安全架构与案例实践](https://www.bilibili.com/video/av49293128)
 
-## 网址
-
-- [ddia中文翻译](https://github.com/Vonng/ddia)
 
 ## 附录：笔记汇总
 
