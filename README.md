@@ -147,30 +147,32 @@ db：
 - [《互联网创业核心技术:构建可伸缩的web应用》](https://book.douban.com/subject/26906846/)
 - [《架构即未来:现代企业可扩展的Web架构、流程和组织》](https://book.douban.com/subject/26765979/)
 
-#### 1.2 分布式原理
+#### 1.2 分布式
 
+分布式原理：
 - [《分布式系统：概念与设计》](https://book.douban.com/subject/21624776/)
 - [《 Designing Data-Intensive Applications 》](https://book.douban.com/subject/30329536/)：即ddia《数据密集型应用系统设计》，[ddia中文翻译](https://github.com/Vonng/ddia)
+
+分布式实践：
 - [《分布式实时处理系统：原理、架构与实现》](https://book.douban.com/subject/26833829/)
+- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
+- [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)
 
-#### 1.3 微服务原理
+#### 1.3 微服务
 
-- [《生产微服务》](https://book.douban.com/subject/27127050/)
-- [《微服务设计》](https://book.douban.com/subject/26772677/) 
-- [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)
+微服务原理：
+- [《微服务设计》](https://book.douban.com/subject/26772677/) ：
 - [《微服务架构设计模式》](https://book.douban.com/subject/33425123/)
+
+微服务架构实践
+- [《高可用可伸缩微服务架构》](https://book.douban.com/subject/33417842/)
 - [《持续演进的Cloud Native：云原生架构下微服务最佳实践》](https://book.douban.com/subject/30370644/)
 
 #### 1.4 工具与实践
 
-应用实践：
-- [《从Paxos到Zookeeper分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
-- [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)
-
 技术实践：
 - [《RabbitMQ实战指南》](https://book.douban.com/subject/27591386/)
 - [《Spring微服务实战》](https://book.douban.com/subject/30233791/)
-- [《架构探险：轻量级微服务架构》](https://book.douban.com/subject/27115266/)
 - [《Spring Cloud微服务实战》](https://book.douban.com/subject/27025912/)
 - [《Kafka权威指南》](https://book.douban.com/subject/27665114/)
 
