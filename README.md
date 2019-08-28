@@ -15,8 +15,7 @@
 
 本笔记特点：**力争让读者无论从任何一个大章节阅读，都能知晓上下文，不会出现知识断层**！！！！（缺点：会出现重复笔记）  
 
-开宗明义：为了给集群、分布式、微服务的概念做个初步理解，笔者整理了一分开宗明义笔记。  
-![点我查看](https://github.com/overnote/over-architecture/blob/master/开宗明义.md)
+为了给集群、分布式、微服务的概念做个初步理解，笔者整理了一分开宗明义笔记:[点我查看](https://github.com/overnote/over-architecture/blob/master/开宗明义.md)
 
 ## 二 相关资料
 
