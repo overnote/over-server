@@ -26,57 +26,35 @@ docker build -t nginx:v0.2 /opt/dockerfile/nginx/
 /opt/dockerfile/nginx/ 则代表Dockerfile存放位置，如果是当前目录，则用 .(点)表示
 ```
 
-
 ## 二 Dockerfile 快速入门
 
-使用dockerfile快速基于ubuntu创建一个定制化nginx镜像：
+使用Dockerfile快速基于Centos创建一个定制化jdk1.8镜像：
 ```
 # 创建Dockerfile专用目录
-mkdir /home/docker/images/nginx -p
-cd docker/images/nginx/
-vim Dockerfile
+mkdir /home/docker/images/java -p
+cd docker/images/java/
+vim Dockerfile                          # 此名称固定
 ```
 
 Dockerfile内容：
 ```
 # 基础镜像
-FROM ubuntu
+FROM centos:7
 # 镜像作者
-MAINTAINER panda ruyuejun@gmail.com
-# 执行命令
-RUN mkdir hello
-RUN mkdir world
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install nginx -y
-# 对外端口
-EXPOSE 80
+MAINTAINER ruyue ruyuejun@gmail.com
+# 工作牡蛎
+WORKDIR /usr
+# 执行命令：将宿主机当前目录的jdk文件上传到容器目录
+RUN mkdir /usr/local/java
+ADD jdk-8u1710linux-x64.tar.gz /usr/local/java/
+# 配置环境
+ENV JAVA_HOME /usr/local/java/jdk1.8.0_171
+ENV JRE_HOME $JAVA_HOME/jre
 ```
 
-构建：
+构建：指定镜像名称与构建位置
 ```
-#构建镜像
-docker build -t ubuntu-nginx:v0.1 .
-#查看新生成镜像
-docker images
-REPOSITORY TAG IMAGE ID CREATED SIZE
-ubuntu-nginx v0.1 a853de1b8be4 9 seconds ago 208MB
-nginx latest e548f1a579cf 6 days ago 109MB
-ubuntu latest 0458a4468cbc 4 weeks ago 112MB
-#查看构建历史
-docker history a853de1b8be4
-IMAGE CREATED CREATED BY SIZE COMMENT
-#镜像 创建时间 依赖命令 大小 评论
-a853de1b8be4 41 seconds ago /bin/sh -c #(nop) EXPOSE 80 0B
-925825b680fd 42 seconds ago /bin/sh -c apt-get install nginx -y 56.5MB
-4c57d6c99603 About a minute ago /bin/sh -c apt-get update 40MB
-b6d030a0d123 About a minute ago /bin/sh -c sed -i's/security.ubuntu.com/mir…2.77kB
-3357bf8069ca About a minute ago /bin/sh -c sed -i's/archive.ubuntu.com/mirr…2.77kB
-7bfb90c1e20d About a minute ago /bin/sh -c mkdir world 0B
-972d6ab76d01 About a minute ago /bin/sh -c mkdir hello 0B
-a76394bfad01 About a minute ago /bin/sh -c #(nop) MAINTAINER panda kstwoak4… 0B
-# 注意：因为容器没有启动命令，所以访问不了
+docker build -t myjdk:1.8 .
 ```
 
 ## 三 常用命令

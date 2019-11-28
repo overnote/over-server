@@ -2,9 +2,7 @@
 
 容器模型与虚拟机模型相比，主要区别在于：容器运行不会独占操作系统，运行在同一个宿主机上的多个容器其实是共享着宿主机系统，这样能够大量节省系统资源，如CPU、RAM等，单台硬件上可以同时跑成千上百个容器，非常适合业务高峰期通过启动大量容器进行横向扩展。    
 
-Docker是一款使用Go语言开发的基于LCX容器技术开源容器引擎。
-
-Docker主要解决的问题: 
+Docker是一款使用Go语言开发的基于LCX容器技术开源容器引擎，ocker主要解决的问题: 
 - 保证程序运行环境的一致性; 
 - 降低配置开发环境、生产环境的复杂度和成本; 
 - 实现程序的快速部署和分发。
@@ -47,7 +45,7 @@ docker --version
 ```
 # 创建docker用户组
 sudo groupadd docker                # docker会自动查找该用户组
-sudo gpasswd -a ${USER} docker      # 添加用户到用户组，可以避免命令中需要sudo的麻烦
+sudo gpasswd -a ${USER} docker      # 添加当前用户到用户组，可以避免命令中需要sudo的麻烦
 newgrp docker                       # 更新用户组
 
 # 安装必要组件
@@ -55,87 +53,44 @@ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
 # 配置软件源
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-# 检查下url是否都是阿里云的，如果不是，把 download-stage.docker.com 替换为 mirros.aliyun.com/docker-ce/
-vim /etc/yum.repos.d/docker-ce.repo     
+
+# 检查 /etc/yum.repos.d/docker-ce.repo 中的url是否都是阿里云的，可把 download-stage.docker.com 替换为 mirros.aliyun.com/docker-ce   
 
 # 更新并安装docker-ce
 sudo yum makecache fast
-sudo yum -y install docker-ce
+sudo yum -y install docker-ce       # docker-ce 是社区版，免费
 
 # 检测安装
 docker version
 ```
 
-#### 3.3 Ubuntu安装
-
-安装步骤：
-```
-# 创建docker用户组
-sudo groupadd docker                # docker会自动查找该用户组
-sudo gpasswd -a ${USER} docker      # 添加用户到用户组，可以避免命令中需要sudo的麻烦
-newgrp docker                       # 更新用户组
-
-# 安装基本软件
-sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common lrzsz -y
-
-# 使用阿里云的源
-sudo curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-
-# 安装docker：sudo apt-get install docker-ce=<VERSION> -y
-sudo apt-get install docker-ce -y
-
-# 测试安装
-docker version
-```
-
-贴士1：如果出现ubuntu升级错误`Problem executing scripts APT`，则可以按照以下步骤：
-```
-sudo pkill -KILL appstreamcli
-wget -P /tmp https://launchpad.net/ubuntu/+archive/primary/+files/appstream_0.9.4-1ubuntu1_amd64.deb https://launchpad.net/ubuntu/+archive/primary/+files/libappstream3_0.9.4-1ubuntu1_amd64.deb
-sudo dpkg -i /tmp/appstream_0.9.4-1ubuntu1_amd64.deb /tmp/libappstream3_0.9.4-1ubuntu1_amd64.deb
-```
-
 ## 三 docker启动镜像加速
 
-进入网址：https://www.daocloud.io/mirror  按照网址中的贴士进行设置即可，Linux按照网址设置后，还需要设置：
-```
-vim /etc/docker/daemon.json
-# 将配置修改为：
-{"registry-mirrors": ["http://e5d212cc.m.daocloud.io"], "insecure-registries": []}
+这里选择使用 daocloud 镜像加速，进入网址：https://www.daocloud.io/mirror  按照网址中的贴士进行设置即可（其实就是修改了/etc/docker/daemon.json），但是需要重启docker。
 
-# 如果docker已经开启，需要重启docker
-systemctl restart docker
+大致步骤：
 ```
+# Linux
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+```
+
+## 四 docker常见使用
 
 docker的启动相关命令：
 ```
-systemctl [参数] docker   参数有：start stop restart status
-
 # centOS6
-sudo service docker start       # 直接启动
-sudo service docker enable      # 开机启动
+sudo service docker start           # 直接启动
+sudo service docker enable          # 开机启动
 
 # centOS7
-sudo systemctl start docker     # 守护进程启动
-sudo systemctl enable docker    # 开机启动
+sudo systemctl start docker         # 守护进程启动
+sudo systemctl enable docker        # 开机启动
 ```
-
-## 四 docker目录与删除
 
 docker的基本目录：
 ```
 /etc/docker/        # docker的认证目录
 /var/lib/docker/    # docker的应用目录
-```
-
-删除docker命令：
-```
-sudo apt-get purge docker-ce -y
-sudo rm -rf /etc/docker
-sudo rm -rf /var/lib/docker/
 ```
 
 ## 五 docker升级
