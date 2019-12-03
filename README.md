@@ -36,6 +36,8 @@
 - [Service Mesh微服务架构设计](https://book.douban.com/subject/34856113/)
 
 微服务落地：
+- [分布式服务架构：原理、设计与实战](https://book.douban.com/subject/27091029/)：前五章非常不错
+- [架构探险：轻量级微服务架构（下册](https://book.douban.com/subject/27115266/)：下册的微服务基本实践不错
 - [持续演进的Cloud Native](https://book.douban.com/subject/30370644/)
 - [亿级流量网站架构核心技术](https://book.douban.com/subject/26999243/)
 - [大型网站系统与Java中间件开发实践](https://book.douban.com/subject/25867042/)
