@@ -52,6 +52,9 @@
 - [银行信息系统架构](https://book.douban.com/subject/26677445/)
 - [面向模式的软件架构](https://book.douban.com/subject/4848563/)
 
+- [重构:改善既有代码的设计](https://book.douban.com/subject/26575459/)
+- [设计模式](https://book.douban.com/subject/1052241/)
+
 ## 三 数据库书籍
 
 通用类：
