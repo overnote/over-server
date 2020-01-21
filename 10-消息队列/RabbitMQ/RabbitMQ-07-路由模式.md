@@ -14,14 +14,14 @@
 
 `fanout`类型的交换机只能广播转发，所以这里也需要使用`direct`类型。Direct exchange的路由算法很简单：就是将exchange的binding_key和消息的routing_key进行比较，如果完全匹配这说明是需要分发的队列。  
 
-![](../images/mq/mq-17.png)  
+![](../../images/mq/rabbitmq-17.png)  
 
 在图中，`direct`交换机 X 有两个队列与之绑定：
 - 队列Q1：由1个路由`binding_key`orange路由到
 - 队列Q2：由2个路由`binding_key`: black,green路由到
 
 当然也可以实现多重绑定：  
-![](../images/mq/mq-18.png)   
+![](../../images/mq/rabbitmq-18.png)   
 
 此时交换机会将消息广播至所有匹配的绑定队列，以此实现对同一个binding_key需要分发到多个队列的情况。
 

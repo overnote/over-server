@@ -55,7 +55,7 @@
 
 此时的结构：  
 
-![](../images/mq/mq-16.png)  
+![](../../images/mq/rabbitmq-16.png)  
 
 ## 二 完整代码实现
 

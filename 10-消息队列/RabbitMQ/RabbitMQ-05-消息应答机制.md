@@ -13,7 +13,7 @@ producter只会将消息发送给exchange.Exchange，exchange类似一个中转�
 当Exchange接收到消息后，会依据交换机的类型（type），来判定该消息要进行哪种处理：是将消息发送到指定的一个队列，还是广播到所有队列，或者是直接将其忽略？ 
 
 工作过程如图：  
-![](../images/mq/mq-08.png)  
+![](../../images/mq/rabbitmq-08.png)  
 
 交换机常用类型有：direct、topic、fanout、headers。  
 
@@ -47,7 +47,7 @@ topic类型的交换机会和RouteKey进行模糊匹配，对应的队列也必�
 - ”#“：匹配一个或多个词，如 `log.#` 能匹配到 `log.info.oa`
 - ”*“：匹配一个词，如 `log.*` 能匹配到 `log.erro`
 
-![](../images/mq/mq-09.png)
+![](../../images/mq/rabbitmq-09.png)
   
 注意：Direct模式下，可以使用RabbitMQ自带的Exchange：default Exchange，不需要额外进行任何绑定操作。  
 
@@ -57,7 +57,7 @@ topic类型的交换机会和RouteKey进行模糊匹配，对应的队列也必�
 
 由于没有匹配路由规则，fanout转发消息是最快的。 
 
-![](../images/mq/mq-10.png)
+![](../images/mq/rabbitmq-10.png)
 
 
 ### 2.5 交换机常用字段
