@@ -41,7 +41,6 @@ expires [time|epoch|max|off]          # time
 静态文件可以交给nginx处理，而动态文件如.jso,.do可以由Nginx反向代理到Tomcat的服务器处理：
 
 ```
-
 http {
     ...
 
@@ -67,5 +66,55 @@ http {
 
     ...
 }
+```
 
+## 五 https支持
+
+https的支持需要nginx在安装时加入ssl模块：
+```
+./configure –with-http_ssl_module
+```
+
+配置如下：
+```
+server {
+
+    ...
+
+    listen 443;
+    ssl on;
+    ssl_certificate ******.pem;
+    ssl_certificate_key ******.key;
+
+    ...
+}
+
+```
+
+## 六 防盗链
+
+Nginx有三种方法可以进行防盗链：
+- 对Nginx下所有项目的指定资源不同文件类型进行防盗链，比如对gif、jpg、png、swf、flv、mp3、mp4等资源进行防盗链
+- 对指定目录或者指定项目目录进行防盗链，比如Nginx下有3个项目，A、B、C，可以对A目录下的images进行防盗链，也可以对B目录下的images进行防盗链
+- nginx的第三方模块ngx_http_accesskey_module 可以实现下载文件的防盗链
+
+
+对指定文件防盗链：
+```
+location ~* \.(gif|jpg|png|swf|flv)$ { 
+  valid_referers none blocked my.cn; # my.cn是可以盗链的域名或IP，一般情况可以把google，baidu等加入
+  if ($invalid_referer) {            # 不推荐这样做：这样会不断地302重定向很多次，会加重服务器的负担，除非有单独图片服务器
+    # 如果有人非法盗链资源，则返回一张防盗链的图片
+    # rewrite ^/ https://www.my.cn:90/picture/images/details-image-1.jpg;    
+    return 403; 
+  } 
+}
+```
+
+对指定目录进行防盗链：
+```
+location /img/ {  
+  valid_referers none blocked server_names my.cn ;  # 允许访问该目录的域名或IP
+  if ($invalid_referer) {return 403;}               # 不允许访问返回403
+}
 ```
