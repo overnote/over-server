@@ -79,7 +79,12 @@ vim /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app
 ### 2.3 docker安装
 
 ```
-docker run -d --hostname my-rabbit --name rmq -p 15672:15672 -p 5672:5672 -p 25672:25672 -e RABBITMQ_DEFAULT_USER=用户名 -e RABBITMQ_DEFAULT_PASS=密码 rabbitmq:3-management
+# 下载并启动docker
+docker pull rabbitmq:3.6.15-management
+docker run -d --hostname localhost --name myrabbit -p 15672:15672 -p 5672:5672 rabbitmq:3.6.15-management
+
+# 启动多个容器
+docker run -d --hostname localhost2 --name myrabbit2 -p 15673:15672 -p 5673:5672 rabbitmq:3.6.15-management
 ```
 
 ## 三 RabbitMQ的启动与停止

@@ -71,7 +71,7 @@ go run producer.go -str=test.....
 
 ### 三 完整的工作队列代码
 
-### 2.1 生产端
+### 3.1 生产端
 
 ```go
 package main
@@ -132,7 +132,7 @@ func errorHandle(msg string, err error) {
 }
 ```
 
-### 2.2 消费端
+### 3.2 消费端
 
 ```go
 package main
