@@ -1,8 +1,8 @@
 ## 一 Nginx介绍
 
-Nginx现在的功能十分强大，可以作为HTTP服务器，反向代理服务器，缓存加速访问，邮件服务器，支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等常见功能，并支持第三方模块扩展。  
+Nginx现在的功能十分强大，可以作为HTTP服务器，反向代理服务器，邮件服务器等，支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等常见功能，并支持第三方模块扩展。  
 
-Nginx在生产环境中，能够支持高达4万的并发连接数。这得与Nginx使用最新的epoll(Linux2.6内核)和kqueue(freebsd)网络I/O模型。而Apache使用的是传统的select模型，其Prefork模式为多进程模式，需要经常派生子进程，消耗CPU比Nginx高很多。  
+Nginx在生产环境中，能够支持高达4万的并发连接数，这归功于与Nginx使用最新的epoll(Linux2.6内核)和kqueue(freebsd)网络I/O模型。而Apache使用的是传统的select模型，其Prefork模式为多进程模式，需要经常派生子进程，消耗CPU比Nginx高很多。  
 
 Nginx常见的使用场景：
 - 静态资源服务：通过本地文件系统提供服务
@@ -27,13 +27,6 @@ start .\nginx.exe               # 启动后查看进程管理器中是否有ngin
 但是有可能遇到无法启动问题，大多是因为80端口被占用，解决办法：  
 - 打开regedit，找到：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP
 - 继续找到REG_DWORD类型的项Start，将其改为0，重启电脑即可
-
-常用命令：
-```
-nginx -s stop                   # 停止nginx
-nginx -s reload                 # 重新加载nginx
-nginx -s quit                   # 退出nginx
-```
 
 ### 2.2 Linux源码安装
 
@@ -87,13 +80,20 @@ Nginx的模块经常被划分为：
 - 邮件服务模块：当前版本默认编译不会将邮件服务编译进nginx
 - 第三方模块：扩展Nginx服务器应用 
 
-## 三 Nginx源码文件目录
+### 2.4 Nginx源码文件目录
 
 在Nginx安装目录中，存在四个目录：
 - conf：配置文件目录，nginx.conf是核心配置文件
 - html：静态文件目录
 - logs：日志文件目录，access.log是访问日志，err.log是错误日志
 - sbin：命令目录
+
+## 三 Nginx常用命令
+```
+nginx -s stop                   # 停止nginx
+nginx -s reload                 # 重新加载nginx
+nginx -s quit                   # 退出nginx
+```
 
 ## 四 Nginx启动与关闭
 
@@ -120,34 +120,3 @@ kill -9 (PID)
 kill -INT PID                                   # 此处PID为Nginx的master进程PID
 kill -9 nginx                                   # 强制停止所有nginx进程
 ```
-
-## 五 信号量
-
-### 5.1 常用信号量
-
-- TERM：快速关闭
-- INT：快速关闭
-- QUIT：优雅的关闭进程（等请求结束后再关闭）
-- HUP：重要！！！改变配置文件时用来，平滑的重读配置文件
-- USR1：重读日志，在日志按月/日分割时使用
-- USR2：平滑升级Nginx版本
-- WINGCH：优雅关闭旧进程，配合USR2进行升级
-
-### 5.2 平滑重启
-
-在对nginx进行平滑重启前，可以先确认其配置文件nginx.conf的语法是否正确：
-```
-nginx/sbin/nginx -t -c nginx.conf           # -t 就是用来检查语法是否正确的
-```
-
-执行平滑重启：
-```
-kill -HUP pid   # pid其实也被nginx记录了下来，可以使用该命令：kill -HUP `cat logs/nginx.pid`
-```
-
-### 5.3 平滑升级
-
-- 步骤1：替换nginx文件为新版文件  
-- 步骤2：使用指令 `kill -USER2 pid`   
-- 步骤3：旧版的主进程将重命名.pid文件为.oldbin，然后执行新版的nginx可执行程序，依次启动新的主进程和新的工作进程。此时新旧实例会同时运行。  
-- 步骤4：从容关闭旧版 `kill -WINCH 旧版pid`，此时旧版工作进程会在处理所有连接后退出。  

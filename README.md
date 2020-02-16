@@ -207,8 +207,6 @@ Oracle：
 docker:
 - [深入浅出Docker](https://book.douban.com/subject/30486354/)
 - [Docker容器与容器云 第2版](https://book.douban.com/subject/26894736/)
-- [Docker源码分析](https://book.douban.com/subject/26581184/)
-- [自己动手写Docker](https://book.douban.com/subject/27082348/)
 
 k8s:
 - [Kubernetes in Action](https://book.douban.com/subject/30418855/)

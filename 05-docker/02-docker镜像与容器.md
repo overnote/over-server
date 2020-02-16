@@ -18,6 +18,8 @@ Docker采用C/S架构，其引擎是模块化的，由许多工具协同工作�
 
 ## 二 docker镜像
 
+### 2.1 镜像命令
+
 镜像是docker的可执行文件，其中包括运行应用程序所需的所有代码内容、依赖库、环境变量和配置文件等，通过镜像才能创建容器。  
 
 镜像常用命令有（镜像名可以是 镜像ID:镜像版本）：
@@ -50,9 +52,29 @@ cat 模板文件名.tar | docker import - [自定义镜像名]
 cat ubuntu-16.04-x86_64.tar.gz | docker import - ubuntu-mini
 ```
 
-## 一 docker容器简介
+### 2.2 镜像原理
 
-Docker将镜像文件运行起来后，产生的对象就是容器，容器相当于是镜像运行起来的一个实例，类似于常见的虚拟机的概念。  
+Linux的文件系统由bootfs和rootfs两部分组成：
+- bootfs：包含bootloader（引导程序）、kernel（内核）
+- rootfs：即root文件系统，包含典型Linux系统中的`/dev`，`/proc`，`/bin`，`/etc`等目录和文件
+
+不同的Linux发行版，其bootfs基本一样，而rootfs不同。  
+
+Docker的镜像本质上市一个分层文件系统，如下所示：  
+
+![](../images/cloud/docker-01.png)  
+
+Docker镜像的最底端复用了宿主机的bootfs，第二层是root文件系统，称为base image，再往上逐级添加其他镜像文件。这种统一的文件系统（Union File System）技术能够将不同的层整合为一个文件系统，为这些层提供统一的视角，从用户角度来说，他们只会看到一个文件系统。  
+
+一个tomcat镜像，需要从底往上依赖图中所示的多个其他镜像，如JDK镜像，所以tomcat的安装包才几十M，但是Docker中的tomcat安装后镜像却几百兆！  
+
+同样的道理，Docker的centos镜像很小，远远不足1G，因为该镜像可以直接复用宿主机的bootfs，只单独使用了rootfs和其他镜像层。  
+
+## 三 docker容器
+
+### 3.0 docker容器概述
+
+Docker将镜像文件运行起来后，产生的对象就是容器，容器相当于是镜像运行起来的一个实例，类似于常见的虚拟机的概念。**容器的本质其实是镜像在启动时，Docker在镜像最顶层加载了一个读写文件系统作为了容器！**  
 
 容器与虚拟机的相同点：
 - 容器和虚拟机一样，都会对物理硬件资源进行共享使用。 
@@ -67,9 +89,7 @@ Docker将镜像文件运行起来后，产生的对象就是容器，容器相�
   - 其次创建、启动或关闭容器，如同创建、启动或者关闭进程那么轻松，而创建、启动、关闭一个操作系统就没那么方便了。
 - 也因为轻量，在给定的硬件上能运行更多数量的容器，甚至可以直接把Docker运行在虚拟机上。
 
-## 二 容器常用命令
-
-### 2.1 容器常用命令
+### 3.1 容器常用命令
 
 贴士：容器名和容器id的作用相同
 ```
@@ -99,7 +119,7 @@ docker port 容器名               # 查看容器端口
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 930f29ccdf8a
 ```
 
-### 2.2  容器的关闭、终止、删除
+### 3.2  容器的关闭、终止、删除
 
 ```
 docker stop 容器名              # 关闭：延迟关闭一个或多个处于暂停状态或者运行状态的容器 
@@ -108,73 +128,3 @@ docker kill 容器名              # 终止：强制并立即关闭一个或多�
 docker rm 容器名                # 删除已关闭容器，-f 参数可以删除正在运行的容器
                                # 批量删除示例：docker rm -f $(docker ps -a -q)
 ```
-
-### 2.3 文件拷贝 目录挂载
-
-文件拷贝：
-```
-docker cp 宿主机内文件 容器名:容器目录  # 拷贝的目的是容器可能本身也需要安装一些软件，如容器mycentos内部安装redis
-                                    # 该命令也可以用于从容器内拷贝出文件到本地，将cp后两个命令倒置即可
-```
-
-目录挂载：文件拷贝只能一个文件一个文件的传输，不很方便，可以将宿主机一个目录挂载为容器的目录：
-```
-docker run -id --name=mycentos2 -v /usr/local/mydir centos:latest   # 将宿主机的 mydir 挂载到容器 mycentos2中
-```
-
-## 三 几个软件安装示例
-
-安装mysql：
-```
-docker pull mysql:5.7
-docker run -di --name=mymysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
-```
-
-安装nginx
-```
-docker pull nginx
-docker run -di --name=mynginx -p 80:80 nginx
-docker exec -it mynginx /bin/bash
-cd etc/nginx                                    # nginx在容器内的安装目录
-```
-
-## 四 基于容器创建镜像
-
-方式一：将当容器版本升级
-```
-#命令格式: docker commit -m '改动信息' -a "作者信息" [container_id][new_image:tag] 
-
-#命令演示:
-
-# 第一步：执行一些操作
-./docker_in.sh d74fff341687
-mkdir /hello
-mkdir /world
-ls
-exit
-
-# 第二步：创建一个镜像
-docker commit -m 'mkdir /hello /world ' -a "panda" d74fff341687 nginx:v0.2 
-
-# 第三步：查看镜像，启动容器
-docker images
-docker run -itd nginx:v0.2 /bin/bash
-./docker_in.sh ae63ab299a84           # 进入容器查看
-ls
-```
-
-方式二：直接导出镜像
-```
-#命令格式: docker export [容器id] > 模板文件名.tar 
-
-#命令演示:
-docker export ae63ab299a84 > nginx.tar        # 导出
-cat nginx.tar | docker import - panda-test    # 导入
-```
-
-import与load的区别: import可以重新指定镜像的名字，docker load不可以  
-
-export 与 保存 save 的区别:
-- export导出的镜像文件大小，小于save保存的镜像。
-- export导出是根据容器拿到的镜像，再导入时会丢失镜像所有的历史。
-

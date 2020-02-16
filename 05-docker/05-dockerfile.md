@@ -1,13 +1,13 @@
 ## 一 Dockerfile简介
 
-Dockerfile类似脚本，让容器实现自动化。  
+Dockerfile类似脚本，用于制作docker镜像，可以让容器实现自动化。  
 
-Dockerfile的作用：
-- 1、找一个镜像： ubuntu
-- 2、创建一个容器： docker run ubuntu
-- 3、进入容器： docker exec -it 容器 命令
-- 4、操作： 各种应用配置....
-- 5、构造新镜像： docker commit
+Dockerfile的操作步骤：
+- 1、找一个镜像： `ubuntu`
+- 2、创建一个容器： `docker run ubuntu`
+- 3、进入容器： `docker exec -it 容器 命令`
+- 4、操作： `各种应用配置....`
+- 5、构造新镜像： `docker commit`
 
 Dockerfile使用规范：
 - 1、大： 首字母必须大写D
@@ -17,16 +17,44 @@ Dockerfile使用规范：
 
 Dockerfile使用命令：
 ```
-#构建镜像命令格式：
+# 构建镜像命令格式：
 docker build -t [镜像名]:[版本号][Dockerfile所在目录]
-#构建样例：
+
+# 构建样例：
 docker build -t nginx:v0.2 /opt/dockerfile/nginx/
-#参数详解：
--t 指定构建后的镜像信息，
-/opt/dockerfile/nginx/ 则代表Dockerfile存放位置，如果是当前目录，则用 .(点)表示
+
+# 参数详解：
+-t 指定构建后的镜像信息
+/opt/dockerfile/nginx/ 则代表Dockerfile存放位置，如果是当前目录则用 . 表示
 ```
 
-## 二 Dockerfile 快速入门
+## 二 Dockerfile实战
+
+### 2.1 构建一个web服务
+
+需求：定义一个dockerfile，发布一个go的web服务。  
+
+假设现在root目录下有一个Dockerfile，以及一个`hello.go`的源码文件：
+```
+# 定义父镜像
+FROM go:1.13
+
+# 定义作者信息
+MAINTAINER ruyue ruyuejun@gmail.com
+
+# 添加go文件到容器中
+ADD /root/hello.go app.go
+
+# 定义容器执行的命令
+CMD go run app.go
+```
+
+利用Dockerfile构建一个镜像，并指定镜像名称与构建位置
+```
+docker build -t myweb:1.0 .
+```
+
+### 2.2 构建一个jdk1.8镜像
 
 使用Dockerfile快速基于Centos创建一个定制化jdk1.8镜像：
 ```
@@ -40,19 +68,25 @@ Dockerfile内容：
 ```
 # 基础镜像
 FROM centos:7
+
 # 镜像作者
 MAINTAINER ruyue ruyuejun@gmail.com
-# 工作牡蛎
+
+# 工作目录
 WORKDIR /usr
-# 执行命令：将宿主机当前目录的jdk文件上传到容器目录
+
+# 在容器中执行命令：创建java的安装目录
 RUN mkdir /usr/local/java
+
+# 将宿主机当前目录的jdk文件上传到容器中的安装目录
 ADD jdk-8u1710linux-x64.tar.gz /usr/local/java/
+
 # 配置环境
 ENV JAVA_HOME /usr/local/java/jdk1.8.0_171
 ENV JRE_HOME $JAVA_HOME/jre
 ```
 
-构建：指定镜像名称与构建位置
+利用Dockerfile构建一个镜像，并指定镜像名称与构建位置
 ```
 docker build -t myjdk:1.8 .
 ```
@@ -148,84 +182,4 @@ ONBUILD COPY ["index.html","/var/www/html/"]
 ```
 # 取消缓存：
 docker build --no-cache -t [镜像名]:[镜像版本][Dockerfile位置]
-```
-
-## 五 实战-部署一个web服务
-
-```
-#1、docker环境配置
-#1.1 获取docker镜像
-#获取一个ubuntu的模板文件
-cat ubuntu-16.04-x86_64.tar.gz | docker import - ubuntu-nimi
-#1.2 启动docker容器
-#启动容器，容器名称叫go-test
-docker run -itd --name go-test ubuntu-nimi
-#进入容器
-docker exec -it go-test /bin/bash
-#2、go环境部署
-#2.1 基础环境配置
-#配置国内源
-vim /etc/apt/sources.list
-#文件内容如下
-deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
-deb http://mirrors.aliyun.com/ubuntu/ xenial universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe
-multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
-#如果由于网络环境原因不能进行软件源更新可以使用如下内容
-sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-#更新软件源，安装基本软件
-apt-get update
-apt-get install gcc libc6-dev git vim lrzsz -y
-#2.2 go环境配置
-#安装go语言软件
-//apt-get install golang -y
-由于软件源问题改使用新版本go
-将go1.10.linux-amd64.tar.gz拷贝到容器中进行解压
-tar -C /usr/local -zxf go1.10.linux-amd64.tar.gz
-#配置go基本环境变量
-export GOROOT=/usr/local/go
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=/root/go
-export PATH=$GOPATH/bin/:$PATH
-#3、go项目部署
-#3.1 获取beego代码
-#下载项目beego
-go get github.com/astaxie/beego
-#3.2 项目文件配置
-#创建项目目录
-mkdir /root/go/src/myTest
-cd /root/go/src/myTest
-#编辑go项目测试文件test.go
-package main
-import (
-"github.com/astaxie/beego"
-) t
-ype MainController struct {
-beego.Controller
-} f
-unc (this *MainController) Get() {
-this.Ctx.WriteString("hello world\n")
-} f
-unc main() {
-beego.Router("/", &MainController{})
-beego.Run()
-} #
-3.3 项目启动
-#运行该文件
-go run test.go
-#可以看到：
-#这个go项目运行起来后，开放的端口是8080
-#4、测试
-#4.1宿主机测试
-#查看容器的ip地址
-docker inspect go-test
-#浏览器查看效果：
-curl 172.17.0.2:8080
 ```
