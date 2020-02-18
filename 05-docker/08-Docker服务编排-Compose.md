@@ -3,11 +3,9 @@
 > 服务编排：在实际开发中，业务可能需要被拆分成多个子任务，然后对这些子任务进行顺序组合，当子任务按照方案执行完毕后，就完成了业务目标，服务编排即对多个子任务执行顺序进行确定的过程
 
 常见的服务编排工具：
-- 单机版： Docker Compose，由docker公司发行
-- 集群版：
-  - Docker Swarm：docker公司发行
-  - Mesos Apache：Apache开源服务编排工具
-  - Kubernetes：即大名鼎鼎的k8s，Google出品，该编排工具支持多种容器，docker是其默认的容器
+- docker swarm：docker公司出品的服务编排工具套件
+- Mesos：
+- kubernetes：即大名鼎鼎的k8s，其目标是让容器化应用的部署更加简单、高效！
 
 ## 二 Docker Compose安装
 

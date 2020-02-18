@@ -107,7 +107,7 @@ docker的基本目录：
 # 列出包含docker字段的软件的信息
 rpm -qa | grep docker
 
-# 卸载
+# 卸载 
 yum remove docker-1.13.1-53.git774336d.el7.centos.x86_64
 yum remove docker-client-1.13.1-53.git774336d.el7.centos.x86_64
 yum remove docker-common-1.13.1-53.git774336d.el7.centos.x86_64
