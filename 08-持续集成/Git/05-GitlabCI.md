@@ -1,8 +1,8 @@
 ## 一 操作过程
 
-#### 1.1 配置runner
+### 1.1 配置runner
 
-#### 1.2 编写.gitlab-ci.yml
+### 1.2 编写.gitlab-ci.yml
 
 在代码的根目录创建文件`.gitlab-ci.yml`，内容格式大致如下：
 ```

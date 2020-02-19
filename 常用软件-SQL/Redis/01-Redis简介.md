@@ -1,6 +1,6 @@
 ## 一 Redis初识
 
-#### 1.1 Redis简介
+### 1.1 Redis简介
 
 Redis（Remote Dictionary Server）是使用C语言编写的开源高性能键值存储数据库。  
 
@@ -32,7 +32,7 @@ Redis优势：
 - SET:共同好友，共同爱好，统计网站访问IP（唯一性），好友推荐
 - ZSET:排行榜，带权重的消息队列
 
-#### 1.2 Redis安装
+### 1.2 Redis安装
 
 redis解压后就可以直接使用了（不像Nginx等Linux软件需要configure，redis官方已经配置过了）。
 ```
@@ -44,7 +44,7 @@ cp redis.conf /usr/local/redis/             # 复制一份配置文件到redis�
 ```
 
 
-#### 1.3 启动 
+### 1.3 启动 
 
 ```
 cd /usr/local/redis/
@@ -54,7 +54,7 @@ cd /usr/local/redis/
 # 设置密码方式启动：修改配置文件 requirepass 密码  （此处注意，行前不能有空格）
 ```
 
-#### 1.4 连接
+### 1.4 连接
 
 ```
 # 启动连接

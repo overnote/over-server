@@ -7,14 +7,14 @@
 
 ## 二 git 安装
 
-#### 2.1 win与mac安装
+### 2.1 win与mac安装
 ```
 Window安装：https://git-scm.com/直接下载安装
 Mac安装：命令行输入命令 git  
 ```
 安装完毕后：任意目录（建议开发根目录）右键 > Git Bash Here	
 
-#### 2.2 centOS源码安装git
+### 2.2 centOS源码安装git
 
 ```
 1 查看当前系统是否已经安装git
@@ -45,7 +45,7 @@ git --version                                   # 版本号为2.3，安装成功
 
 ## 三 git 使用
 
-#### 3.0 git工作原理与流程
+### 3.0 git工作原理与流程
 
 git工作原理：
 - Git管理文件的三种状态：committed（提交）、modified（修改）、staged（暂存）；
@@ -63,7 +63,7 @@ Git本地仓库指的是开发者开发设备中的仓库。
 - 2 暂存文件，将文件的快照放入暂存区域。
 - 3 提交文件，找到暂存区域的文件，将快照永久性存储到Git仓库目录。
 
-#### 3.1 基础使用
+### 3.1 基础使用
 
 第一步：配置git开发者信息
 ```
@@ -139,7 +139,7 @@ git reset 和git checkout区别：reset 重写了历史，checkout 则没有。
 
 
 
-#### 3.2 使用问题
+### 3.2 使用问题
 
 问题一：commit时，填错了-m内容，该如何撤销提交？ 
 ``` 
@@ -168,7 +168,7 @@ git push -f origin master                   # 6.Finally, force update your repos
 
 在产生第1次提交时，Git会默认创建了一个名为master的分支，并且有指针（HEAD）指到了末端。指针（HEAD）用来标明当前处于哪个分支的哪个版本。
 
-#### 4.2使用分支
+### 4.2使用分支
 ```
 git branch                     # 查看分支，查询结果中 *表示当前所在分支
 git branch ‘分支名称’	 	    # 创建一个新的分支

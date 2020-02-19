@@ -1,6 +1,6 @@
 ## 一 Rewrite
 
-##### 1.1 Rewrite简介
+#### 1.1 Rewrite简介
 
 Rewrite是Web服务器必备的重要基本功能，用于实现URL重写，Nginx的该功能依赖于PCRE。
 
@@ -12,11 +12,11 @@ URL重写的功能：
 - 重写：访问google.cn最终会变成访问goodle.com的过程就是重定向
 - 转发：从一个域名到另外一个已有站点的访问过程，转发后客户端地址访问地址是不变的
 
-#### 2.1 常见指令
+### 2.1 常见指令
 
 ## 二 虚拟主机中的location
 
-#### 2.1 location简介
+### 2.1 location简介
 
 location会根据uri进行不同的定位。语法可以分为三类：
 - location = patt {}    # 精准匹配，匹配成功立则停止搜索，立即处理请求
@@ -46,7 +46,7 @@ location ~ image {
 }
 ```
 
-#### 2.2 rewrite 重写
+### 2.2 rewrite 重写
 
 重写常用命令：
 ```

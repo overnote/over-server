@@ -60,7 +60,7 @@ fastDFS的存储节点集群以组的方式进行管理：
 
 ## 四 fastDFS安装
 
-#### 4.1 安装
+### 4.1 安装
 
 - libfastcommon-1.36.zip
   - fastDFS的基础库包
@@ -74,7 +74,7 @@ fastDFS的存储节点集群以组的方式进行管理：
   - ./make.sh
   - sudo ./make.sh install
 
-#### 4.2 配置
+### 4.2 配置
 
 fastDFS的配置文件默认存储目录: /etc/fdfs
 ```
@@ -167,7 +167,7 @@ group1/M00/00/00/wKj3g1v0zTuAW1zaAAAUrymD-Z449.yaml
 
 ## 六 nginx与fastDFS整合
 
-#### 6.1 安装
+### 6.1 安装
 
 1. 在存储节点上安装Nginx, 将软件安装包拷贝到fastDFS存储节点对应的主机上
 ```
@@ -187,7 +187,7 @@ $ ./configure --add-module=fastdfs插件的源码根目录/src
 $ make
 $ sudo make install
 ```
-#### 6.2 一些错误
+### 6.2 一些错误
 
 make错误：
 ```
@@ -220,7 +220,7 @@ nginx
 # 去看 logs/error.log
 ```
 
-#### 6.3 解决步骤
+### 6.3 解决步骤
 
 1. 拷贝文件 mod_fdfs.conf
 ```

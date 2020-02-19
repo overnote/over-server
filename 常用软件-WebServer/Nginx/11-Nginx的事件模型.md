@@ -23,7 +23,7 @@ Nginx类似一个事件的收集和分发者，在下列生产消费模型中，
 
 Nginx服务器还支持rtsig模型，kqueue模型（FreeBSD支持），dev/poll模型（Solaris支持），eventport模型（Solaris支持），通过不同的配置，实现Nginx对这些模型的支持。
 
-#### 3.3 RunLoops事件处理循环模型
+### 3.3 RunLoops事件处理循环模型
 
 RunLoops指进程内部用来不停的调配工作，对事件进行循环处理的一种模型，属于进程或者线程的基础架构部分。该模型对事件的处理不是自动的，需要在设计代码过程中，在适当的时候启动Run-Loop机制对输入的事件作出响应。  
 

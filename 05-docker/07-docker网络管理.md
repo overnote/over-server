@@ -10,7 +10,7 @@ docker实现端口映射的两种方式：
 
 ## 二 docker网络-随机映射方式
 
-#### 2.1 默认的随机映射
+### 2.1 默认的随机映射
 
 ```
 # 格式 docker run -d -P [镜像名称] 
@@ -21,7 +21,7 @@ netstat -tnulp              # 再次查看当前宿主机开放了哪些端口
 # 此时可以在浏览器访问 http://localhost:端口  nginx可以直接使用了
 ```
 
-#### 2.2 指定映射
+### 2.2 指定映射
 
 ```
 # 格式：docker run -d -p [宿主机ip]::[容器端口] --name [容器名称][镜像名称]
@@ -34,7 +34,7 @@ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end
 docker ps           
 ```
 
-#### 2.3 多端口映射
+### 2.3 多端口映射
 
 ```
 # 格式 docker run -d -p [宿主机端口1]:[容器端口1] -p [宿主机端口2]:[容器端口2] --name [容器名称][镜像名称]
@@ -43,7 +43,7 @@ docker run -d -p 520:443 -p 6666:80 --name server2 nginx
 
 ## 三 docker网络-指定映射
 
-#### 3.0 docker 网路基础
+### 3.0 docker 网路基础
 
 docker常用网络命令：
 ```
@@ -63,7 +63,7 @@ docker的常用的网络模式：
 - none模式: 不做任何网络的配置，可以最大限度的定制化，容器启动后无网络连接
 - overlay模式: 容器彼此不在同一网络，而且能互相通信。
 
-#### 3.1.1 bridge模式-自定义网络
+### 3.1.1 bridge模式-自定义网络
 
 端口映射其实就是使用了默认的bridge网络模式，当然也可以自定义一个网络：
 ```
@@ -93,7 +93,7 @@ docker network connect bridge-test2 nginx--2            # 将容器nginx--2连�
 - 使用默认的桥接模型创建的容器是可以直接联网的
 - 使用自定义的桥接模型创建的容器不可以直接联网，但是可以通过端口映射来实现联网
 
-#### 3.1.2 bridge模式-设置网桥
+### 3.1.2 bridge模式-设置网桥
 
 网桥是一种设备，根据设备的物理地址来划分网段，并传输数据，docker0是默认的网桥，之前我们创建的容器，它们的ip都是从docker0自动获取的。  
 
@@ -131,7 +131,7 @@ systemctl restart docker                # 重启，此时创建容器将会使�
 ps aux |grep docker                     # 查看重启后效果
 ```
 
-#### 3.2 host模型
+### 3.2 host模型
 
 host模型使用宿主机的ip进行对外提供服务，本身没有ip地址。host模式适合一个台宿主机跑一个固定容器，或者多个占用不同端口的应用场景，其网络性能很高。
 ```
@@ -142,7 +142,7 @@ netstat -tnulp
 docker network inspect host             # 查看host下有哪些容器
 ```
 
-#### 3.3 none模型
+### 3.3 none模型
 
 ```
 # 命令格式
