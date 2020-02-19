@@ -1,6 +1,6 @@
 ## 一 Rewrite
 
-#### 1.1 Rewrite简介
+### 1.1 Rewrite简介
 
 Rewrite是Web服务器必备的重要基本功能，用于实现URL重写，Nginx的该功能依赖于PCRE。
 
