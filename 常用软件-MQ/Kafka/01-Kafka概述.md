@@ -4,7 +4,7 @@ Kafka是由Linkedin公司基于Scala语言开发的分布式消息系统，具�
 
 目前Kafka支持多种客户端语言，包括：Java、Go、C++、NodeJS等。  
 
-apache kafka是一个分布式发布-订阅消息系统和一个强大的队列，可以处理大量的数据，并使能够将消息从一个端点传递到另一个端点，kafka适合离线和在线消息消费。kafka消息保留在磁盘上，并在集群内复制以防止数据丢失。kafka构建在zookeeper同步服务之上。它与apache和spark非常好的集成，应用于实时流式数据分析。  
+Kafka虽然是一个分布式消息中间件,但是并不符合JMS规范，即使消息已经被消费，也不会被马上删除，当消息保留一段时间后，会被批量删除，无论消息是否被消费过，该方式可以极大降低磁盘IO。 
 
 Kafka的一些架构优点：
 - 高性能：具备极高吞吐量，即使存储了许多TB的消息，也能发挥出稳定的性能，非常适合大数据场景。 
@@ -15,19 +15,22 @@ Kafka的一些架构优点：
 
 ### 2.1 基础架构
 
-Kafka官方的架构图：  
-
-![](../../images/mq/kafka-01.png)
-
-Kafka的四大核心：
-- Producer：生产者相关的API允许应用程序发布记录流至一个或者多个kafka的主题（topics）
-- Consumer：消费者相关的API允许应用程序订阅一个或者多个主题，并处理这些主题接收到的记录流。
-- Connector：允许构建和运行可重用的生产者或者消费者，能够把kafka主题连接到现有的应用程序或数据系统。例如：一个连接到关系数据库的连接器可能会获取每个表的变化。
-- Stream：允许应用程序充当流处理器（stream processor），从一个或者多个主题获取输入流，并生产一个输出流到一个/多个主题，能够有效的变化输入流为输出流。
-
-### 2.2 Kafka架构关系与分区
+Kafka架构图：  
 
 ![](../../images/mq/kafka-02.png)  
+
+Kafka架构中的重要组件：
+- Broker：Kafka的服务端，负责接收、持久化数据。
+- Producer：Kafka的生产端，负责生产数据发送到Broker。通常Producer是一个包含Kafka客户端的业务服务。
+  - Producer具备异步发送能力，可以将多条消息缓存到客户端，然后批量发送给Broker。
+  - Producer是直连Broker的，会和Tpoics下所有Partition Leader保持Socket连接
+- Consumer：Kafka的消费端，负责从Broker订阅Topic，从订阅的Topic中 接收数据。通常Consumer是一个包含Kafka客户端的业务服务。
+
+贴士：Topic即主题，类似数据库中表明，生产者和消费者之间通过Topic建立对应关系，每个Topic下对应多个Partition，所有的元数据保存在ZooKeeper中。  
+
+Kafka的其他组件。
+- Connector：允许构建和运行可重用的生产者或者消费者，能够把kafka主题连接到现有的应用程序或数据系统。例如：一个连接到关系数据库的连接器可能会获取每个表的变化。
+- Stream：允许应用程序充当流处理器（stream processor），从一个或者多个主题获取输入流，并生产一个输出流到一个/多个主题，能够有效的变化输入流为输出流。  
 
 一个典型的kafka集群中包含:
 - 若干个Producer：生产者，使用push模式将消息发布到Broker
@@ -35,13 +38,17 @@ Kafka的四大核心：
 - 若干个Consumer：消费者，使用pull模式从Broker中订阅并消费消息
 - 一个zookeeper集群：管理集群配置，选举leader，以及在Consumer Group发生变化时进行Rebalance（负载均 衡）； 
 
+### 2.2 Kafka架构关系与分区
+
 kafka的详细架构图：
 ![](../../images/mq/kafka-03.svg)  
 
 图中的一些术语：
 - Topic：每条发布到kafka集群的消息都有一个类别，这个类别就叫做Topic
 - Partition：Partition是一个物理上的概念，每个Topic包含一个或者多个Partition
-- Consumer Group：每一个Consumer属于一个特定的Consumer Group（可以为每个Consumer指定 groupName）
+- Consumer Group：每一个消费者属于一个特定的消费组，该组里的消费者都订阅的是同一个Topic，但是是该Topic下的不同Partition。  
+
+注意：每个Partition只能被一个消费者订阅，但是一个消费者可以订阅多个Partition，这样可以避免一定的重复消费。但是也降低了消费者的能力，可以通过增加Partition的方式实现扩展。  
 
 详细架构图中，KafkaCluster包含三台服务器：broker1、broker2、broker3，生产端生产了300G数据，Kafka并不会直接存储这300G数据，而是在三台机器中分别存储部分数据：
 - Broker1负责存储Partition1数据
@@ -84,14 +91,6 @@ kafka的详细架构图：
 
 贴士：lsr表示当前可用的副本。  
 
-### 2.5 kafka Partition oﬀset
+### 2.5 Kafka Partition offset
 
 任何发布到此partition的消息都会被直接追加到log文件的尾部，每条消息在文件中的位置称为oﬀset（偏移量），oﬀset是一个long类型数字，它唯一标识了一条消息，消费者通过（oﬀset，partition，topic）跟踪记录。  
-
-
-
-
-
-
-
-
