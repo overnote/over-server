@@ -125,14 +125,12 @@ rpc框架：   grpc、dubbo、brpc
 - [微服务架构设计模式](https://book.douban.com/subject/33425123/)：
 - [微服务设计](https://book.douban.com/subject/26772677/) ：学习微服务的一些基础概念，本书可以最后看
 - [微服务设计原理与架构 郑天民](https://book.douban.com/subject/30233793/)：冷门书籍，但是讲解也不错
-- [未来架构-从服务化到云原生](https://book.douban.com/subject/30477839/)：适合大致领略下云与安生当下的一些技术体系
 - [大型企业微服务架构实践与运营](https://book.douban.com/subject/30449480/)：对微服务技术、理念的总结
 
 微服务落地：
 - [架构探险：轻量级微服务架构（下册](https://book.douban.com/subject/27115266/)：下册的微服务基本实践不错
 - [架构修炼之道](https://book.douban.com/subject/33389549/)
 - [持续演进的Cloud Native](https://book.douban.com/subject/30370644/)
-- [亿级流量网站架构核心技术](https://book.douban.com/subject/26999243/)
 - [微服务架构实战 郑天民](https://book.douban.com/subject/30417709/)
 
 ### 2.4 架构之术
