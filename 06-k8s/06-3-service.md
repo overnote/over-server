@@ -1,10 +1,10 @@
-## 四 Service
+## 一 Service
 
-### 4.1 Service概述
+### 1.1 Service概述
 
-在第三节中，通过Controller可以创建一个应用，但是此时Pod的状态不是人为控制的，Pod的IP在创建时自动分配，如果Pod被误删，Controller重新拉起一个新Pod时，Pod的地址会发生变化，即应用本身也需要更换IP地址，这肯定在企业环境是不合适的。   
+通过Controller可以创建一个应用，但是此时Pod的状态不是人为控制的，Pod的IP在创建时自动分配，如果Pod被误删，Controller重新拉起一个新Pod时，Pod的地址会发生变化，即应用本身也需要更换IP地址，这在企业环境是不合适的。   
 
-k8s为了解决上述问题,引入了Service，无论Pod的IP如何变化，其所在的service是不会发生改变的。Service并不是微服务概念中的实体服务，只是一个iptables或者ipvs的转发规则。  
+k8s为了解决上述问题，引入了Service，无论Pod的IP如何变化，其所在的service是不会发生改变的。Service并不是微服务概念中的实体服务，只是一个iptables或者ipvs的转发规则。  
 
 通过Sercice可以为客户端提供访问Pod方法，在k8s内部，Service通过Pod标签与Pod进行关联。    
 
@@ -48,7 +48,7 @@ Service与Pod是通过断点关联的：
 kubectl get endpoints
 ```
 
-### 4.2 通过资源清单创建Service
+### 1.2 通过资源清单创建Service
 
 service的资源清单既可以和Deployment写在一起，也可以分开，这里分开书写。  
 
@@ -106,7 +106,7 @@ curl http://10.1.210.41:8011
 kubectl get endpoints
 ```
 
-### 4.3 NodePort类型service 支持集群外访问
+### 1.3 NodePort类型service 支持集群外访问
 
 如果要指定集群外部可以访问,则service为:
 ```yaml
@@ -150,7 +150,7 @@ spec:
 
 这样服务会在宿主机集群开启30001 端口监听，此时外部就可以对集群进行访问了！
 
-### 4.4 演示 service 的负载均衡
+### 1.4 演示 service 的负载均衡
 
 ```
 # 查看pod
