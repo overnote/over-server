@@ -1,6 +1,8 @@
 ## 一 Jekins初识
 
-Jenkins是由Java开发的持续集成工具，官网：https://jenkins.io/download    
+Jenkins是由Java开发的老牌持续集成工具，官网：https://jenkins.io/download    
+
+Jenkins易于安装配置，具备完善的web管理界面，能够集成RSS/E-mail用来发布构建结果，生成测试报告，同时Jenkins支持分布式构建，也提供了大量的插件，如：git、svn、maven等。  
 
 
 
