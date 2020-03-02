@@ -203,6 +203,7 @@ Oracle：
 ### 4.3 Docker&k8s
 
 docker:
+- [Docker开发指南](https://book.douban.com/subject/27013734/)
 - [深入浅出Docker](https://book.douban.com/subject/30486354/)
 - [Docker容器与容器云 第2版](https://book.douban.com/subject/26894736/)
 

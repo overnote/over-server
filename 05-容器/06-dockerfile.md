@@ -176,10 +176,67 @@ ONBUILD：触发器指令，当一个镜像A被作为其他镜像B的基础镜�
 ONBUILD COPY ["index.html","/var/www/html/"]
 ```
 
-## 四 构架缓存
+## 四 一些贴士
 
-第一次构建很慢，之后的构建都会很快，因为他们用到了构建的缓存：
+### 4.1 镜像尽量小
+
+对于Docker镜像来说，不应该使用过大的体积，越大越慢，也更容器出现问题。 
+
+### 4.2 清理构建冗余
+
+Dockerfile中多个RUN指令推荐使用&&连接符以及反斜杠换行做法将其包含在一个RUN指令。  
+
+RUN指令在构建时，也会拉取一些构建工具，这些工具也会残留在镜像中移交到生产环境，这是不合适的，需要在构建完成后进行清理。  
+
+一般采用过阶段构建的方式，多阶段构建包含多个FROM指令，每个FROM都是一个新的构建阶段，并且可以方便的复制之前阶段的构建：
+```dockerfile
+FROM node:latest AS client
+WORKDIR /usr/src/app/views
+COPY react-app .
+RUN npm install
+RUN npm run build
+
+FROM maven:latest AS server
+WORKDIR /usr/src/app/
+COPY pom.xml .
+RUN mvn -B -f pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency
+\:resolve
+COPY . .
+RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
+
+FROM java:8-jdk-alpine AS app
+RUN adduser -Dh /home/user1 user1
+WORKDIR /work
+COPY --from=client /usr/src/app/views/build/ .
+WORKDIR /app
+COPY --from=server /usr/src/target/test.jar .
+ENTRYPOINT ["java", "-jar", "/app/test.jar"]
+CMD ["--spring.profiles.active=postgres"]
 ```
-# 取消缓存：
-docker build --no-cache -t [镜像名]:[镜像版本][Dockerfile位置]
+
+Dockerfile中有3个FROM指令，每个FROM构成一个单独的构建阶段，各个阶段都会在内部从0开始编号：
+- 阶段0，示例中叫做client，拉取了node镜像，使用RUN显著增加了镜像大小
+- 阶段1，示例中叫做server，拉取了maven镜像，也产生了构建工具
+- 阶段2，示例中叫做app，拉取jdk镜像，但是使用`COPY from`后，只会拉取client和server中的应用代码
+
+### 4.3 镜像缓存
+
+第一次构建很慢，之后的构建都会很快，这是docker构建镜像时采用了缓存机制，第一次构建时会拉取镜像，并会将该构建内容（镜像层）缓存下来，为后续的构建提供复用。
+
+注意：
+- 一旦有指令在缓存中未命中，则后续的整个构建过程都不再使用缓存！！  
+- 如果copy的内容发生变化，也不会使用缓存（docker内部会就算每个复制文件的Checksum值）
+
+取消缓存：
+```
+docker build --nocache=true
+```
+
+### 4.4 合并镜像
+
+当镜像中层数太多时，合并是很好的优化方式，但是这种合并也带来了弊端：无法共享镜像层，导致存储空间的低效利用，push和pull的镜像体积也会更大。  
+
+合并操作：
+```
+docker image build --squash
 ```
