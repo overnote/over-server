@@ -35,3 +35,28 @@ git push origin hotfix:newfeature
 删除远程分支git push origin --delete 分支名称
 删除远程分支git purigin sh o:分支名称
 ```
+
+### 1.3 分支使用步骤示例
+
+```txt
+# 查看当前分支
+git branch
+
+# 创建一个新分支 login
+git checkout -b login
+
+# 提交完成的代码到 login分支
+git add .
+git commit -m "完成 login"
+
+# 提交分支到远程
+git branch      # 查看本地分支，多出一个 login，而远程没有
+git push -u origin login
+
+# 合并本地分支到master
+git checkout master
+git merge login
+
+# 提交master到远程
+git push
+```
