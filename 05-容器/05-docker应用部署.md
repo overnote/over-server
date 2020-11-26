@@ -51,7 +51,7 @@ tomcat
 ```
 docker pull redis:5.0
 
-docker run -id --name=myredis -p 6379:6379 redis:5.0
+docker run -id --name=myredis -p 6379:6379 redis:5.0 --requirepass 123456
 ```
 
 ## 二 镜像的制作
