@@ -36,7 +36,7 @@
 
 常见的分布式应用主要包括：
 
-- 与分布式存储（storage）：每个节点存一部分数据，实践方式比如 hadoop 的 hdfs
+- 分布式存储（storage）：每个节点存一部分数据，实践方式比如 hadoop 的 hdfs
 - 分布式计算（computation）：对计算任务进行切换，每个节点算一些，实践方式比如 hadoop 的 mapreduce
 
 分布式理论最大的挑战是如何将任务分发到不同的计算机节点，可以利用分片机制（partition）。
