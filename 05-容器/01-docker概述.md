@@ -73,11 +73,43 @@ sudo yum -y install docker-ce       # docker-ce 是社区版，免费
 docker version
 ```
 
-## 三 docker启动镜像加速
+## 三 docker基本配置
+
+### 3.1 镜像加速
 
 docker的镜像加速其实就是修改`/etc/docker/daemon.js`文件内容，然后重启docker即可，常用的镜像官网有：
 - https://www.daocloud.io/mirror 
 - https://cr.console.aliyun.com/cn-beijing/instances/mirrors
+
+### 3.2 日志大小控制
+
+在linux上，容器日志一般存放在/var/lib/docker/containers/container_id/下面。
+
+Docker的日志极大，很快就会让磁盘不堪重负，要从根本上解决问题，需要限制容器服务的日志大小上限。这个通过配置容器docker-compose的max-size选项来实现：
+
+```txt
+nginx: 
+  image: nginx:1.12.1 
+  restart: always 
+  logging: 
+    driver: “json-file” 
+    options: 
+      max-size: “5g” 
+```
+
+也可以进行全局设置：
+
+```txt
+# vim /etc/docker/daemon.json
+
+{
+  "registry-mirrors": ["http://f613ce8f.m.daocloud.io"],
+  "log-driver":"json-file",
+  "log-opts": {"max-size":"500m", "max-file":"3"}
+}
+```
+
+max-size=500m，意味着一个容器日志大小上限是500M，max-file=3，意味着一个容器有三个日志，分别是id+.json、id+1.json、id+2.json。
 
 ## 四 docker常见使用
 
