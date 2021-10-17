@@ -102,48 +102,48 @@ rpc框架：       grpc、dubbo、brpc
 
 ### 1.1 架构基础
 
-- [从零开始学架构](https://book.douban.com/subject/30335935/)：简单认识架构，并实践一些常见互联网技术
-- [互联网创业核心技术:构建可伸缩的 web 应用](https://book.douban.com/subject/26906846/)：认识当前互联网架构的一些常见技术
+- [《从零开始学架构》](https://book.douban.com/subject/30335935/)：简单认识架构，并实践一些常见互联网技术
+- [《互联网创业核心技术:构建可伸缩的 web 应用》](https://book.douban.com/subject/26906846/)：认识当前互联网架构的一些常见技术
 
 ### 1.2 分布式理论
 
 经典书籍：
 
-- [数据密集型应用系统设计](https://book.douban.com/subject/30329536/)：即 ddia
-- [大数据日知录](https://book.douban.com/subject/25984046/)
-- [nosql 精粹](https://book.douban.com/subject/25662138/)
+- [《数据密集型应用系统设计》](https://book.douban.com/subject/30329536/)：即 ddia
+- [《大数据日知录》](https://book.douban.com/subject/25984046/)
+- [《nosql 精粹》](https://book.douban.com/subject/25662138/)
 
 下列书籍评分不高，但是部分章节值得一看：
 
-- [从 Paxos 到 Zookeeper 分布式一致性原理与实践](https://book.douban.com/subject/26292004/)
-- [深入分布式缓存：从原理到实践](https://book.douban.com/subject/27602483/)
-- [etcd 技术内幕](https://book.douban.com/subject/30275551/)
-- [分布式实时处理系统：原理、架构与实现](https://book.douban.com/subject/26833829/)：利用 C++开发一套分布式实时处理系统
-- [大规模分布式存储系统](https://book.douban.com/subject/25723658/)：构建分布式存储系统必备
+- [《从 Paxos 到 Zookeeper 分布式一致性原理与实践》](https://book.douban.com/subject/26292004/)
+- [《深入分布式缓存：从原理到实践》](https://book.douban.com/subject/27602483/)
+- [《etcd 技术内幕》](https://book.douban.com/subject/30275551/)
+- [《分布式实时处理系统：原理、架构与实现》](https://book.douban.com/subject/26833829/)：利用 C++开发一套分布式实时处理系统
+- [《大规模分布式存储系统》](https://book.douban.com/subject/25723658/)：构建分布式存储系统必备
 
 ### 1.3 微服务
 
 微服务设计：
 
-- [微服务架构设计模式](https://book.douban.com/subject/33425123/)：
-- [微服务设计](https://book.douban.com/subject/26772677/) ：学习微服务的一些基础概念，本书可以最后看
-- [微服务设计原理与架构 郑天民](https://book.douban.com/subject/30233793/)：冷门书籍，但是讲解也不错
-- [大型企业微服务架构实践与运营](https://book.douban.com/subject/30449480/)：对微服务技术、理念的总结
+- [《微服务架构设计模式》](https://book.douban.com/subject/33425123/)：
+- [《微服务设计》](https://book.douban.com/subject/26772677/) ：学习微服务的一些基础概念，本书可以最后看
+- [《微服务设计原理与架构 郑天民》](https://book.douban.com/subject/30233793/)：冷门书籍，但是讲解也不错
+- [《大型企业微服务架构实践与运营》](https://book.douban.com/subject/30449480/)：对微服务技术、理念的总结
 
 微服务落地：
 
-- [架构探险：轻量级微服务架构（下册](https://book.douban.com/subject/27115266/)：下册的微服务基本实践不错
-- [架构修炼之道](https://book.douban.com/subject/33389549/)
-- [持续演进的 Cloud Native](https://book.douban.com/subject/30370644/)
-- [微服务架构实战 郑天民](https://book.douban.com/subject/30417709/)
+- [《架构探险：轻量级微服务架构（下册》](https://book.douban.com/subject/27115266/)：下册的微服务基本实践不错
+- [《架构修炼之道》](https://book.douban.com/subject/33389549/)
+- [《持续演进的 Cloud Native》](https://book.douban.com/subject/30370644/)
+- [《微服务架构实战 郑天民》](https://book.douban.com/subject/30417709/)
 
 ### 1.4 架构之术
 
-- [架构即未来](https://book.douban.com/subject/26765979/)
-- [系统架构:复杂系统的产品设计与开发](https://book.douban.com/subject/26938710/)
-- [企业 IT 架构转型之道](https://book.douban.com/subject/27039508/)
-- [银行信息系统架构](https://book.douban.com/subject/26677445/)
-- [面向模式的软件架构](https://book.douban.com/subject/4848563/)
+- [《架构即未来》](https://book.douban.com/subject/26765979/)
+- [《系统架构:复杂系统的产品设计与开发》](https://book.douban.com/subject/26938710/)
+- [《企业 IT 架构转型之道》](https://book.douban.com/subject/27039508/)
+- [《银行信息系统架构》](https://book.douban.com/subject/26677445/)
+- [《面向模式的软件架构》](https://book.douban.com/subject/4848563/)
 
 ## 二 开发禅道
 
@@ -176,70 +176,69 @@ rpc框架：       grpc、dubbo、brpc
 
 MySQL：
 
-- [涂抹 MySQL](https://book.douban.com/subject/25898562/)：基础入门
-- [高性能 MySQL](https://book.douban.com/subject/23008813/)：mysql 开发技巧提升
-- [MySQL 性能调优与架构设计](https://book.douban.com/subject/3729677/)：MySQLDBA 宽泛学习
-- [MySQL 技术内幕 InnoDB 存储引擎 第 2 版](https://book.douban.com/subject/24708143/)
-- [数据库索引设计与优化](https://book.douban.com/subject/26419771/)
-- [数据库查询优化器的艺术](https://book.douban.com/subject/25815707/)
+- [《涂抹 MySQL》](https://book.douban.com/subject/25898562/)：基础入门
+- [《高性能 MySQL》](https://book.douban.com/subject/23008813/)：mysql 开发技巧提升
+- [《MySQL 性能调优与架构设计》](https://book.douban.com/subject/3729677/)：MySQLDBA 宽泛学习
+- [《MySQL 技术内幕 InnoDB 存储引擎 第 2 版》](https://book.douban.com/subject/24708143/)
+- [《数据库索引设计与优化》](https://book.douban.com/subject/26419771/)
+- [《数据库查询优化器的艺术》](https://book.douban.com/subject/25815707/)
 
 Redis：
 
-- [Redis 开发与运维](https://book.douban.com/subject/26971561/)：基础入门
-- [Redis 深度历险](https://book.douban.com/subject/30386804/)：开发技巧提升
-- [Redis 设计与实现](https://book.douban.com/subject/25900156/)：redis 源码与架构
+- [《Redis 开发与运维》](https://book.douban.com/subject/26971561/)：基础入门
+- [《Redis 深度历险》](https://book.douban.com/subject/30386804/)：开发技巧提升
+- [《Redis 设计与实现》](https://book.douban.com/subject/25900156/)：redis 源码与架构
 
 MongoDB：
 
-- [MongoDB 权威指南](https://book.douban.com/subject/25798102/)
-- [MongoDB 实战](https://book.douban.com/subject/19977785/)
+- 暂无
 
 PostgreSQL：
 
-- [SQL 基础教程](https://book.douban.com/subject/27055712/)
-- [PostgreSQL 技术内幕](https://book.douban.com/subject/30256561/)
-- [PostgreSQL 数据库内核分析](https://book.douban.com/subject/6971366/)
+- [《SQL 基础教程》](https://book.douban.com/subject/27055712/)
+- [《PostgreSQL 技术内幕》](https://book.douban.com/subject/30256561/)
+- [《PostgreSQL 数据库内核分析》](https://book.douban.com/subject/6971366/)
 
 Oracle：
 
-- [涂抹 Oracle](https://book.douban.com/subject/4196676/)
-- [收获，不止 Oracle](https://book.douban.com/subject/23857303/)
-- [Oracle Database 9i/10g/11g 编程艺术](https://book.douban.com/subject/5402711/)
-- [Oracle 性能诊断艺术](https://book.douban.com/subject/4076215/)
-- [Oracle 高效设计](https://book.douban.com/subject/1503909/)
-- [构建 Oracle 高可用环境](https://book.douban.com/subject/2531036/)
-- [DBA 的思想天空](https://book.douban.com/subject/19966085/)
-- [Oracle RAC 日记](https://book.douban.com/subject/4838427/)
-- [深入解析 Oracle](https://book.douban.com/subject/3393767/)
-- [Oracle DBA 手记 2](https://book.douban.com/subject/5362865/)
-- [海量数据库解决方案](https://book.douban.com/subject/5346169/)
+- [《涂抹 Oracle》](https://book.douban.com/subject/4196676/)
+- [《收获，不止 Oracle》](https://book.douban.com/subject/23857303/)
+- [《Oracle Database 9i/10g/11g 编程艺术》](https://book.douban.com/subject/5402711/)
+- [《Oracle 性能诊断艺术》](https://book.douban.com/subject/4076215/)
+- [《Oracle 高效设计》](https://book.douban.com/subject/1503909/)
+- [《构建 Oracle 高可用环境》](https://book.douban.com/subject/2531036/)
+- [《DBA 的思想天空》](https://book.douban.com/subject/19966085/)
+- [《Oracle RAC 日记》](https://book.douban.com/subject/4838427/)
+- [《深入解析 Oracle》](https://book.douban.com/subject/3393767/)
+- [《Oracle DBA 手记 2》](https://book.douban.com/subject/5362865/)
+- [《海量数据库解决方案》](https://book.douban.com/subject/5346169/)
 
 ### 3.2 web 服务器
 
-- [深入理解 Nginx：模块开发与架构解析 第 2 版](https://book.douban.com/subject/26745255/)
-- [Tomcat 架构解析](https://book.douban.com/subject/27034717/)
-- [深入剖析 Tomcat](https://book.douban.com/subject/10426640/)
+- [《深入理解 Nginx：模块开发与架构解析 第 2 版》](https://book.douban.com/subject/26745255/)
+- [《Tomcat 架构解析》](https://book.douban.com/subject/27034717/)
+- [《深入剖析 Tomcat》](https://book.douban.com/subject/10426640/)
 
 ### 3.2 消息队列
 
-- [RabbitMQ 实战指南](https://book.douban.com/subject/27591386/)
-- [Kafka 权威指南](https://book.douban.com/subject/27665114/)
-- [Apache Kafka 源码剖析](https://book.douban.com/subject/27038473/)
+- [《RabbitMQ 实战指南》](https://book.douban.com/subject/27591386/)
+- [《Kafka 权威指南》](https://book.douban.com/subject/27665114/)
+- [《Apache Kafka 源码剖析》](https://book.douban.com/subject/27038473/)
 
 ### 3.4 Docker&k8s
 
 docker:
 
-- [Docker 开发指南](https://book.douban.com/subject/27013734/)
-- [深入浅出 Docker](https://book.douban.com/subject/30486354/)
-- [Docker 容器与容器云 第 2 版](https://book.douban.com/subject/26894736/)
+- [《Docker 开发指南》](https://book.douban.com/subject/27013734/)
+- [《深入浅出 Docker》](https://book.douban.com/subject/30486354/)
+- [《Docker 容器与容器云 第 2 版》](https://book.douban.com/subject/26894736/)
 
 k8s:
 
-- [Kubernetes in Action](https://book.douban.com/subject/30418855/)
-- [Service Mesh 微服务架构设计](https://book.douban.com/subject/34856113)
-- [云原生服务网格 Istio：原理、实践、架构与源码解析](https://book.douban.com/subject/34438220/)
-- [Prometheus 监控实战](https://book.douban.com/subject/34801408/)
+- [《Kubernetes in Action》](https://book.douban.com/subject/30418855/)
+- [《Service Mesh 微服务架构设计》](https://book.douban.com/subject/34856113)
+- [《云原生服务网格 Istio：原理、实践、架构与源码解析》](https://book.douban.com/subject/34438220/)
+- [《Prometheus 监控实战》](https://book.douban.com/subject/34801408/)
 
 ## 附录：笔记汇总
 
